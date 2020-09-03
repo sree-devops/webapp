@@ -1,0 +1,19 @@
+name: Test Action
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: 20ea1822f6c77392ecd55299a714abacf7b33f71
+        SONAR_TOKEN: 09d6f3a268043b53f228df17accf8d72ab627ffe
